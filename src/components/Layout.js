@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
   }
   ::selection {
     color: ${props => props.theme.colors.bg};
-    background: ${props => props.theme.colors.primary};
+    background: #00bfff;
   }
   html {
     font-family: ${props => props.theme.fontFamily.sansSerif};
@@ -63,12 +63,12 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.colors.grey.default};
   }
   a {
-    color: ${props => props.theme.colors.primary};
+    color: #00bfff;
     text-decoration: none;
     transition: all ${props => props.theme.transitions.normal};
   }
   a:hover {
-    color: ${props => props.theme.colors.primaryLight};
+    color: #00bfff;
   }
   a:not([href]):not([tabindex]) {
     color: inherit;
@@ -204,9 +204,7 @@ const Layout = ({ children, customSEO }) => {
         <GlobalStyle />
         {children}
         <Footer>
-          &copy; 2019 by John Doe. All rights reserved. <br />
-          <a href="https://github.com/LekoArts/gatsby-starter-minimal-blog">GitHub Repository</a> <br />
-          <span>Last build: {buildTime}</span>
+          &copy; 2019 by Daniel Kapexhiu. All rights reserved. <br />
         </Footer>
       </>
     </ThemeProvider>
