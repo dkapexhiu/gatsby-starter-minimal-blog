@@ -4,11 +4,7 @@ import styled from 'styled-components'
 import { darken, lighten } from 'polished'
 
 const Wrapper = styled.header`
-  background: linear-gradient(
-    45deg,
-    ${props => darken(0.1, props.theme.colors.primary)},
-    ${props => lighten(0.1, props.theme.colors.primary)}
-  );
+  background: #00bfff;
   grid-column: 1 / -1;
   margin-left: -1rem;
   margin-right: -1rem;
@@ -21,11 +17,11 @@ const Content = styled.div`
   margin: 0 auto;
 
   a {
-    color: ${props => props.theme.colors.white};
+    color: #00bfff;
     font-size: 1.2rem;
     &:hover {
       opacity: 0.85;
-      color: ${props => props.theme.colors.white};
+      color: #00bfff;
     }
   }
 `
