@@ -1,0 +1,47 @@
+---
+date: "2019-03-20"
+title: "WebApp Optimisations"
+categories:
+  - Tech
+---
+
+![](./christopher-gower-291246-unsplash.jpg)
+
+What does it a mean an optimised webapp?
+* it loads quickly,
+* and, being loaded, it works quickly (meaning animations don’t skip frames, scrolling is smooth, and so on)
+
+The site loads quickly when:
+* the server responds to requests in a short time,
+* and the app itself loads and renders quickly.
+
+OPTIMISE JAVASCRIPT
+
+* Minify the JS code
+* Use async and defer for your scripts
+* Split your code to load as few of it as possible
+* And remove unused code from your dependencies
+
+OPTIMISE CSS
+
+* Minify the CSS code
+* Extract critical CSS and fetch it first
+
+HTTP OPTIMISATIONS
+
+* Minify HTML, just like any other resource
+* Compress text resources using Gzip and Brotli
+* Use a CDN to save time on downloading your static resources
+* Preload resources you know you’ll need later
+
+OPTIMISE IMAGES
+
+* Choose the proper image format
+* Optimize image loading time by decreasing their dimensions, decreasing their quality, or making them progressive
+
+FONT OPTIMISATIONS
+
+* Specify the proper fallback font (and a generic font family)
+* Use font-display to configure how the custom font is applied
+
+Source: [3perf.com](https://3perf.com/talks/web-perf-101/).
