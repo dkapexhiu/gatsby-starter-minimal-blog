@@ -1,0 +1,50 @@
+---
+date: "2019-03-25"
+title: "Solid Principles for Developers"
+categories:
+  - Tech
+---
+
+![](./luca-bravo-217276-unsplash.jpg)
+
+Object-Oriented type of programming brought a new design to software development.
+
+This enables developers to combine data with the same purpose/functionality in one class to deal with the sole purpose there, regardless of the entire application.
+
+But, this Object-oriented programming doesn’t prevent confusing or unmaintainable programs.
+
+As such, five guidelines were developed by Robert C. Martin. These five guidelines/principles made it easy for developers to create readable and maintainable programs.
+
+These five principles were called the S.O.L.I.D principles (the acronym was derived by Michael Feathers).
+
+S: Single Responsibility Principle
+O: Open-Closed Principle
+L: Liskov Substitution Principle
+I: Interface Segregation Principle
+D: Dependency Inversion Principle
+
+* Single Responsibility Principle
+A class should be responsible for only one thing. If a class has more than one responsibility, it becomes coupled. A change to one responsibility results to modification of the other responsibility.
+Note: This principle applies not only to classes, but also to software components and microservices.
+
+* Open-Closed Principle
+Software entities(Classes, modules, functions) should be open for extension, not modification.
+
+* Liskov Substitution Principle
+A sub-class must be substitutable for its super-class
+The aim of this principle is to ascertain that a sub-class can assume the place of its super-class without errors. If the code finds itself checking the type of class then, it must have violated this principle.
+
+* Interface Segregation Principle
+Make fine grained interfaces that are client specific
+Clients should not be forced to depend upon interfaces that they do not use.
+This principle deals with the disadvantages of implementing big interfaces.
+
+* Dependency Inversion Principle
+Dependency should be on abstractions not concretions
+A. High-level modules should not depend upon low-level modules. Both should depend upon abstractions.
+B. Abstractions should not depend on details. Details should depend upon abstractions.
+There comes a point in software development where our app will be largely composed of modules. When this happens, we have to clear things up by using dependency injection. High-level components depending on low-level components to function.
+
+
+
+Source: [blog.bitsrc.io](https://blog.bitsrc.io/solid-principles-every-developer-should-know-b3bfa96bb688).
