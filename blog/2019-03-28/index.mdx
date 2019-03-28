@@ -1,0 +1,85 @@
+---
+date: "2019-03-28"
+title: "React.js and jQuery together"
+categories:
+  - Tech
+---
+
+![](./goran-ivos-422398-unsplash.jpg)
+
+React and JQuery are both JavaScript libraries, but they achieve similar effects in very different ways. 
+
+* Can I Use JQuery in React?
+First of all, you can use JQuery in React. If you have Node and NPM installed, simply navigate to your project folder in the terminal and type:
+
+```
+npm install jquery --save
+```
+
+When you’ve done that, you can import the $ symbol from JQuery at the top of any React file, like so:
+
+```
+import React from 'react';
+import $ from 'jquery';
+```
+
+* But should you use JQuery in React?
+Probably not. By using JQuery in React, you are sacrificing several of React’s core benefits. 95% of what you want to achieve using JQuery can be done natively in React. It just requires a different way of thinking.
+
+* The JQuery Selector
+Most of what you do in JQuery will begin with a query. You use jquery() or $() with a selector to target specific element(s) in a page’s HTML, similar to CSS. Here are a few examples, which you’re likely familiar with:
+
+```
+$('h1') // This selects every <h1> element
+$('#main') // This selects an element with the ID 'main'
+$('.open') // This selects every element with the class 'open'
+$("[color='blue']") // This selects every element with an attribute 'color' equal to 'blue'
+```
+
+In React, we want to minimise the number of calls made to the DOM, and so instead of selecting elements using queries, we should instead control as much functionality as we can within individual React components, using props and state to trigger changes.
+So, instead of using something like $('#main') , we should think about how we can insert our desired functionality into the React component where we find the relevant element. If that doesn’t yet make much sense, our two examples should make it clear.
+
+* Example 1: Click Events
+One of the most popular uses of JQuery is to control on-click events, like this:
+
+```
+$('.app').click(function() {
+  alert('Click successful!');
+});
+```
+
+In React, we prefer to achieve this effect using the onClick event. Let’s see this in action.
+
+```
+import React from 'react';
+import './App.css'; 
+const App = () => {
+  const handleClick = () => {
+    alert("Click Successful!");
+  };
+  return (
+    <div className="App">
+      <header className="App-header">
+        <p onClick={handleClick} style={{ fontSize: '100px', cursor: 'pointer' }}>Click Me!</p>
+      </header>
+    </div>
+  )
+}
+export default App;
+```
+
+No need for JQuery’s click() function anymore!
+
+* But what if we want to access a property within the clicked element?
+To do that, we need to pass our handleClick method an event argument, which we usually just shorten to e .
+Let’s update our handleClick method so it looks like this.
+
+```
+const handleClick = (e) => {
+  console.log(e.currentTarget);
+};
+````
+
+Using Chrome of Firefox, press F12 and open up the console. This time, when you click the text, the paragraph tag and its attributes will be logged to the console. And, if we just wanted the inner HTML, we could get it simply by writing console.log(e.currentTarget.innerHTML) .
+
+Source: [medium.com](https://medium.com/@bretcameron/react-intro-for-developers-who-know-jquery-1e9dd65863a8)
