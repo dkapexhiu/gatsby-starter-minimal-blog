@@ -1,0 +1,43 @@
+---
+date: "2019-03-31"
+title: "ES Lint Introduction"
+categories:
+  - Tech
+---
+
+![](./artem-sapegin-199614-unsplash.jpg)
+
+ESLint is a powerful and popular linting tool, which helps you spot errors in your code and fix them as you write and which helps you follow common best-practices. It’s also a great learning tool, since researching ESLint errors has taught me many best practices I didn’t know before, and it’s helped me understand why they are best practices.
+
+You can add it as a node package on a per-project basis or you can use the ESLint extension within VS Code. The second option is quick and easy, and it won’t stop you using unique ESLint configurations for particular projects later on. Simply find the ESLint plugin (the one by Dirk Baeumer) and install it.
+
+To get the most out of the extension, you’ll likely want a global version of the ESLint library installed on your computer. To do that, ensure you have Node installed. Then open your terminal (if you’re inside VS Code, press CNTRL + ' or CMD + ' ) and type in the following code:
+
+```
+npm i -g eslint
+```
+
+With the extension and global library installed, you don’t need to run npm i eslint -s on an individual project if you don't want to. Instead, just add an eslintrc file to the main directory of your project.
+
+To do this, you’ll need to initialise NPM. Make sure you’re in your project’s main directory in the terminal and type npm init . You can then create your eslintrc file by typing eslint --init and following through the steps. (If you’re not sure which style-guide to use, I recommend AirBnB’s.)
+
+Once you’re happy with your ESLint settings, you can make sure that any automatic fixes are applied on saving, by adding the following to settings.json :
+
+```
+{ "eslint.autoFixOnSave": true }
+```
+
+Another Note for Windows Users: Pesky Linebreaks
+By default, line-breaks on Mac and Linux use a simple line feed (LF): \n . Windows, however, uses a carriage return line feed (CRLF):
+
+```
+\r\n .
+```
+
+There are two quick solutions to this. First, you could change the default linebreak settings from unix to windows . To do this, go to your eslintrc file and add "linebreak-style": "windows" under the rules object.
+
+Or if you’re like me, and you think \r\n seems unnecessary when \n will suffice (or you’re collaborating with Mac or Linux users), you can change the default linebreak to LF, by adding the following code to settings.json :
+
+```
+{ "files.eol": "\n" }
+```
