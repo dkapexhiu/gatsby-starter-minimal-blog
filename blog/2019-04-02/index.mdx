@@ -1,0 +1,39 @@
+---
+date: "2019-04-02"
+title: "Difference between try/catch and if/else"
+categories:
+  - Tech
+---
+
+![](./clement-h-544786-unsplash.jpg)
+
+It is good to understand first what an if / else does and what a try / catch does.
+
+The if wants a true / false. So if a variable or function returns true or false, or, as in PHP / JavaScript, that they don't have a strong typing, it returns something other than false.
+
+The try / catch instead is used for execution errors, a kind of sandbox where "try" to execute a code. If that code inside the try generates an error (try to imagine a syntactically incorrect query on SQL, or a JSON.parse () on Javascript where the data arrives is not formally a Json) then proceed to give instructions on the catch which holds the error and allows you to manage it.
+
+If we were to write a code, where the return of the variables does not depend entirely on our code, but on external factors (see the response of a server), at that point we use the try / catch to prevent the execution block.
+
+```
+$.get("http://my.domain.com/wrong_json_format", function(r){
+	try{
+		r = JSON.parse(r); //questa funzione genererà un errore
+	} catch (err){
+		// la restituzione dell'oggetto "err" (lo possiamo anche chiamare "e", "x", etc) ci da la possibilità di avere informazioni sull'errore. Possiamo utilizzarla oppure no.
+ 
+		alert("Errore JSON"); // non usiamo la risposta err
+		alert("Errore" + err.message); //usiamo la risposta err
+ 
+		return false; //blocco la funzione in questo punto
+	}
+	
+	console.log(r); //se il codice va a buon fine, vado avanti con l'esecuzione, in questo faccio un "print" sulla console.
+})
+```
+
+With this code the code execution, in case of error, does not stop. If instead I had used an if / else on the JSON.parse () function,
+```
+if(JSON.parse(r))
+```
+this should generate an error, since you have not anticipated an error management, the execution would be blocked.
