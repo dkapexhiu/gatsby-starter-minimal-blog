@@ -1,0 +1,25 @@
+---
+date: "2019-04-08"
+title: "Native Lazy Loading for web"
+categories:
+  - Tech
+---
+
+![](./goran-ivos-246271-unsplash.jpg)
+
+```
+<img src="example.jpg" loading="lazy" alt="example" />
+<iframe src="example.html" loading="lazy"></iframe>
+```
+
+Lazy loading is for delaying the loading of certain content until the user is near that content on a page. If they never scroll to the content, it is never loaded.
+
+The loading attribute takes three possible arguments:
+* lazy: Candidate for lazy loading.
+* eager: Load right away.
+* auto: This is the equivalent to not having the attribute.
+
+In some ways, this is a really efficient way to deliver content on the web, but since this is done via JavaScript, it is kind of a hacky way to do things. I've never wanted to get JavaScript in between the user and the basic experience on the web.This new attribute lets that happen without getting in the way.
+
+It will be available in Chrome 75 and can be turned on already by visiting chrome://flags
+Source: [addyosmani.com](https://addyosmani.com/blog/lazy-loading/)
