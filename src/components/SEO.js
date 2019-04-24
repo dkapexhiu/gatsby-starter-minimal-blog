@@ -147,6 +147,7 @@ const SEO = props => {
       <html lang={config.siteLanguage} />
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta name="robots" content="noarchive" />
       <meta name="image" content={image} />
       <meta name="gatsby-starter" content="Gatsby Starter Minimal Blog" />
       <meta property="og:locale" content={config.ogLanguage} />
