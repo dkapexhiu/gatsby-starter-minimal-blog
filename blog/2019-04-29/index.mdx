@@ -45,6 +45,28 @@ Priority Hints: hint the "importance" of a resource to prioritize downloading it
 <img importance="high"> 
 <img importance="auto">
 ```
-Works on ```<img>```, ```<link>``` and ```fetch()```.
+Works on ```<img>```, ```<link>``` and ```fetch()```.  
 
+**DNS Prefetching**  
+The browser caches the results of these lookups, but they can be slow. One performance optimization technique is to reduce the number of DNS lookups required by organizing resources onto fewer domains. When that’s not possible, you can warn the browser about the domains it’s going to need to look up with the dns-prefetch resource hint.  
+```
+<link rel="dns-prefetch" href="https://images.example.com">
+```
+When the browser encounters this hint, it can start resolving the images.example.com domain name as soon as possible, even though it doesn’t know how it’ll be used yet. This enables the browser to get ahead of the game and do more work in parallel, decreasing the overall load time.  
 
+**Prefetching The Next Page**  
+The next hint is concerned more with navigation and predicting where the user might go after the page that’s currently being loaded. This one is prefetching, and its link tag might look like this:  
+```
+<link rel="prefetch" href="https://example.com/news/?page=2" as="document">
+```
+This tells the browser that it can go ahead and fetch a page in the background so that it’s ready to go when requested. There’s a bit of a gamble here because you have to preempt where you think the user will navigate next. Get it right, and the next page might appear to load really quickly. Get it wrong, and you’ve wasted time and resources in downloading something that isn’t going to be used. If the user is on a metered connection like a limited mobile phone plan, you might actually cost them real money.  
+
+**Prerendering The Next Page**
+With prefetch, we’ve seen how the browser can download the files in the background ready to use, but also noted that nothing more was done with them at that point. Prerendering goes one step further and executes the files, doing pretty much all the work required to display the page except for actually displaying it. This might include parsing the resource for any subresources such as JavaScript files and images and prefetching those as well.  
+```
+<link rel="prerender" href="https://example.com/news/?page=2">
+```
+This really can make the following page load feel instantaneous, with the sort of snappy load performance you might see when hitting your browser’s back button. The gamble is even greater here, however, as you’re not only spending time requesting and downloading the files, but executing them along with any JavaScript and such. This could use up memory and CPU (and therefore battery) that the user won’t see the benefit for if they end up not requesting the page.
+
+Source: [smashingmagazine.io](https://www.smashingmagazine.com/2019/04/optimization-performance-resource-hints/)  
+        [twitter.com](https://twitter.com/addyosmani)
