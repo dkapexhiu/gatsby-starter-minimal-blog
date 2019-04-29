@@ -54,14 +54,14 @@ The browser caches the results of these lookups, but they can be slow. One perfo
 ```
 When the browser encounters this hint, it can start resolving the images.example.com domain name as soon as possible, even though it doesn’t know how it’ll be used yet. This enables the browser to get ahead of the game and do more work in parallel, decreasing the overall load time.  
 
-**Prefetching The Next Page**  
+**Prefetching The Next Page**   
 The next hint is concerned more with navigation and predicting where the user might go after the page that’s currently being loaded. This one is prefetching, and its link tag might look like this:  
 ```
 <link rel="prefetch" href="https://example.com/news/?page=2" as="document">
 ```
 This tells the browser that it can go ahead and fetch a page in the background so that it’s ready to go when requested. There’s a bit of a gamble here because you have to preempt where you think the user will navigate next. Get it right, and the next page might appear to load really quickly. Get it wrong, and you’ve wasted time and resources in downloading something that isn’t going to be used. If the user is on a metered connection like a limited mobile phone plan, you might actually cost them real money.  
 
-**Prerendering The Next Page**
+**Prerendering The Next Page**  
 With prefetch, we’ve seen how the browser can download the files in the background ready to use, but also noted that nothing more was done with them at that point. Prerendering goes one step further and executes the files, doing pretty much all the work required to display the page except for actually displaying it. This might include parsing the resource for any subresources such as JavaScript files and images and prefetching those as well.  
 ```
 <link rel="prerender" href="https://example.com/news/?page=2">
