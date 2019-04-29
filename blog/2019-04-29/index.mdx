@@ -1,0 +1,25 @@
+---
+date: "2019-04-29"
+title: "Performance and useful tricks for developers"
+categories:
+  - Tech
+---
+
+![](./joshua-aragon-1247600-unsplash.jpg)
+
+**I did not know HTML5 inputs supported validation using regex patterns**  
+<input type="text" id="uname" name="uname" pattern="[a-zA-Z0-9]+" minlength="4" maxlength="10">  
+**Styling #CSS ::placeholder**  
+Use the ::placeholder pseudo element to style your placeholder text in an <input> or <textarea> form element. Most modern browsers support this, but for older browsers, vendor prefixes will be required.  
+**Add subject and body to mailto links**  
+<a href=”mailto:info@example.com?subject=Check this&body=Hey, check this out.”>Email us</a>  
+**Native img lazy-loading**  
+Native <img> lazy-loading is coming to the web! https://bit.ly/loading-attribute … <img loading=lazy> defers offscreen images until the user scrolls near them. Shipping in Chrome ~75  
+**Preload scripts**  
+Is JavaScript critical for your site to be interactive? <link rel=preload> can load these scripts at a higher priority: https://bit.ly/rel-preload . Improved Twitter Lite’s time to interactive by 36%, Tinder’s first contentful paint by 30%.  
+**Preconnect to styles and scripts**  
+<link rel=preconnect> is great for eliminating costly round-trips to important domains from the critical path: https://bit.ly/preconnect . Improved our Time To Interactive on http://Chrome.com  by almost ~1s.  
+**Importance of a resource**  
+Priority Hints: hint the `importance` of a resource to prioritize downloading it sooner/later: <img importance=low> <img importance=high> <img importance=auto> (default) Works on <img>, <link> and fetch()  
+
+
