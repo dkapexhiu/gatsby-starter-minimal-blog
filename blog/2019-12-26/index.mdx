@@ -1,0 +1,38 @@
+---
+date: "2019-09-26"
+title: "Make sidebar 100% height"
+categories:
+  - Tech
+---
+
+![](./sidebar.png)
+
+The trick is that when you use position absolute with top/right/bottom/left 0 it fills the container.
+
+```
+#wrapper {
+
+margin:0;
+
+position: relative;
+
+height: 100%;
+
+overflow: hidden;
+
+}
+
+#sidebar{
+
+position: absolute;
+
+top: 0;
+
+left: 0;
+
+bottom: 0;
+
+height: 100%;
+
+}
+```
