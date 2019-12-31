@@ -1,0 +1,87 @@
+---
+date: "2019-12-31"
+title: "Step by step installation of LEMP stack and deployement of laravel application"
+categories:
+  - Tech
+---
+
+Update the operating system
++ sudo apt-get update
+Search for the php version
++ sudo apt-cache search php or php -v
+Add the php repo
++ sudo add-apt-repository ppa:ondrej/php
+Install php7.2 and related packages
++ sudo apt-get install -y php7.2-cli php7.2-fpm php7.2-mbstring php7.2-mysql php7.2-curl php7.1-mcrypt
+Install MySQL Server
++ sudo apt-get install -y mysql-server
+Login to mysql server
++ mysql -u root -p
+Install nginx
++ sudo apt-get install nginx
+Install git
++ sudo apt-get install git
+Install zip unzip packages
++ sudo apt-get zip unzip
+Generate ssh key for github repo
++ ssh-keygen -t rsa -b 4096 -C "github"
+Show ssh keys
++ cat ~/.ssh/id_rsa.pub
++ Add key to github repo
+Try if everything is done ok
++ ssh -T git@github.com
+Clone laravel repo to html folder in server
++ git clone repo_link html
+Navigate to html folder
++ cd html
+Install composer
++ curl -sS https://getComposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+Enable php extensions in php.ini configuration
++ enable php extensions curl, etc
+Install application dependencies
++ composer install --no-dev
+Copy .env configuration
++ cp .env.example .env
+Generate key
++ php artisan key:generate
+Navigate to nginx site directory
++ cd /etc/nginx/sites-available
+Modify and uncomment these lines in default site configuration
++ sudo nano sites-avaiable/default
+root /var/www/html/public;
+index index.html index.htm index.php;
+try_files $uri $uri/ /index.php$is_args$args;
+location ~ \.php$ {
+include snippets/fastcgi-php.conf;
+fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+}
+Navigate to www directory
++ cd /var/www/
+Remove default html directory
++ sudo rm -rf html
+Navigare to html directory in root that we have cloned the app before
++ cd /root/html
+Move this folder to /var/www
++ sudo mv html /var/www
+Shutdown apache2 service if it is on
++ sudo service apache2 stop
+Start nginx service
++ sudo service nginx start
+Navigate to the app directory
++ cd /var/www/html
+Give permissions to storage folder
++ sudo chmod -R 777 storage
+Login to mysql server console
++ mysql -u root -p
+Create database
++ create database name;
+Exit from mysql server
++ exit
+Navigate to html folder
++ cd /var/www/html
+Change the database credentials
++ sudo nano .env
+Migrate database tables
++ php artisan migrate
+
+[YouTube Tutorial](https://www.youtube.com/playlist?list=PLe30vg_FG4OQ6Qc5sanScihpmQAlBiexl)
