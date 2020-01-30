@@ -7,7 +7,7 @@ categories:
 
 ![](./javascript.jpeg) 
 
-**How to hide all elements specified?  
+**How to hide all elements specified?**    
 ´´´
 const hide = (...el) => [...el].forEach(e => (e.style.display = 'none'));
 
@@ -15,7 +15,7 @@ const hide = (...el) => [...el].forEach(e => (e.style.display = 'none'));
 hide(document.querySelectorAll('img')); // Hides all <img> elements on the page
 ´´´
 
-**How to check if the element has the specified class?  
+**How to check if the element has the specified class?**    
 ´´´
 const hasClass = (el, className) => el.classList.contains(className);
 
@@ -23,7 +23,7 @@ const hasClass = (el, className) => el.classList.contains(className);
 hasClass(document.querySelector('p.special'), 'special'); // true
 ´´´
 
-**How to toggle a class for an element?  
+**How to toggle a class for an element?**    
 ´´´
 const toggleClass = (el, className) => el.classList.toggle(className);
 
@@ -32,7 +32,7 @@ toggleClass(document.querySelector('p.special'), 'special');
 // The paragraph will not have the 'special' class anymore
 ´´´
 
-**How to smooth-scroll to the top of the page?  
+**How to smooth-scroll to the top of the page?**    
 ´´´
 const scrollToTop = () => {
   const c = document.documentElement.scrollTop || document.body.scrollTop;
@@ -46,7 +46,7 @@ const scrollToTop = () => {
 scrollToTop();
 ´´´
 
-**How to check if the parent element contains the child element?  
+**How to check if the parent element contains the child element?**    
 ´´´
 const elementContains = (parent, child) => parent !== child && parent.contains(child);
 
@@ -56,7 +56,7 @@ elementContains(document.querySelector('head'), document.querySelector('title'))
 elementContains(document.querySelector('body'), document.querySelector('body')); // false
 ´´´
 
-**How to fetch all images within an element?  
+**How to fetch all images within an element?**    
 ´´´
 const getImages = (el, includeDuplicates = false) => {
   const images = [...el.getElementsByTagName('img')].map(img => img.getAttribute('src'));
@@ -68,7 +68,7 @@ getImages(document, true); // ['image1.jpg', 'image2.png', 'image1.png', '...']
 getImages(document, false); // ['image1.jpg', 'image2.png', '...']
 ´´´
 
-**How to figure out if the device is a mobile device or a desktop/laptop?  
+**How to figure out if the device is a mobile device or a desktop/laptop?**    
 ´´´
 const detectDeviceType = () =>
   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
@@ -79,7 +79,7 @@ const detectDeviceType = () =>
 detectDeviceType(); // "Mobile" or "Desktop"
 ´´´
 
-**How to get the current URL?  
+**How to get the current URL?**    
 ´´´
 const currentURL = () => window.location.href;
 
@@ -87,7 +87,7 @@ const currentURL = () => window.location.href;
 currentURL(); // 'https://google.com'
 ´´´
 
-**How to remove an event listener from an element?  
+**How to remove an event listener from an element?**    
 ´´´
 const off = (el, evt, fn, opts = false) => el.removeEventListener(evt, fn, opts);
 
