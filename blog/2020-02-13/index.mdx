@@ -28,7 +28,7 @@ A GraphQL API, however, only has one endpoint, usually /graphql. All GraphQL req
 
 query is the operation type, user is the operation endpoint, and name is the requested field that you'd like to get back. The request body is necessary here, and allows you to be quite specific in what you'd like to get back, which brings us to the second big difference between REST and GraphQL.  
 
-**Over- and Underfetching vs Getting What You Ask For**
+**Over- and Underfetching vs Getting What You Ask For**  
 REST APIs are prone to both over- and underfetching. Overfetching, because a REST API will send back all the data in a single endpoint, regardless of whether you want it all. In the below example, you will receive all the fields that are associated with the /movies/12 endpoint:  
 ![](./REST-Query.jpg)
 
