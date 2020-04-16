@@ -1,0 +1,53 @@
+---
+date: "2020-04-16"
+title: "Host a node.js app to digitalocean"
+categories:
+  - Tech
+---
+  
++ Upgrade node.js version on ubuntu  
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -  
+sudo apt-get install -y nodejs  
+nodejs -v  
++ Check if npm is installed  
+npm -v  
++ Install build-essential for some npm packages to work  
+sudo apt install build-essential  
++ Login via FTP program and upload the node.js app to /root  
++ Install PM2 and start server  
+sudo npm install pm2@latest -g  
+pm2 start server.js  
++ Publish changes on app  
+pm2 restart server  
++ Install nginx on ubuntu 18.04  
+sudo apt install nginx  
++ Adjust firewall  
+sudo ufw app list  
+sudo ufw allow 'Nginx Full'  
+sudo ufw allow 'Nginx HTTP'  
++ Checking status of nginx server  
+systemctl status nginx  
+http://server_ip  
++ Setting Up Nginx as a Reverse Proxy Server  
+sudo nano /etc/nginx/sites-available/default  
+```   
+    location / {  
+        proxy_pass http://localhost:3000;  
+        proxy_http_version 1.1;  
+        proxy_set_header Upgrade $http_upgrade;  
+        proxy_set_header Connection 'upgrade';  
+        proxy_set_header Host $host;  
+        proxy_cache_bypass $http_upgrade;  
+    }  
+
+    location /app2 {  
+        proxy_pass http://localhost:3001;  
+        proxy_http_version 1.1;  
+        proxy_set_header Upgrade $http_upgrade;  
+        proxy_set_header Connection 'upgrade';  
+        proxy_set_header Host $host;  
+        proxy_cache_bypass $http_upgrade;  
+    }  
+```
+sudo nginx -t  
+sudo systemctl restart nginx  
